@@ -43,7 +43,7 @@ function SetLaststand(bool)
         while GetEntitySpeed(ped) > 0.5 or IsPedRagdoll(ped) do Wait(10) end
         local pos = GetEntityCoords(ped)
         local heading = GetEntityHeading(ped)
-        TriggerServerEvent("InteractSound_SV:PlayOnSource", "demo", 0.1)
+        -- TriggerServerEvent("InteractSound_SV:PlayOnSource", "demo", 0.1)
         LaststandTime = Config.ReviveInterval
         if IsPedInAnyVehicle(ped) then
             local veh = GetVehiclePedIsIn(ped)
@@ -64,7 +64,7 @@ function SetLaststand(bool)
             TaskPlayAnim(ped, "veh@low@front_ps@idle_duck", "sit", 1.0, 8.0, -1, 1, -1, false, false, false)
         else
             LoadAnimation(lastStandDict)
-            TaskPlayAnim(ped, lastStandDict, lastStandAnim, 1.0, 8.0, -1, 1, -1, false, false, false)
+            TaskPlayAnim(ped, lastStandDict, lastStandAnim, 0.5, 8.0, -1, 1, -1, false, false, false)
         end
         InLaststand = true
         TriggerServerEvent('hospital:server:ambulanceAlert', Lang:t('info.civ_down'))
